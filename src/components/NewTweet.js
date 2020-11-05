@@ -48,7 +48,7 @@ class NewTweet extends Component {
                     <textarea
                         placeholder="What's happening?"
                         value={text}
-                        onChange={this.handleSubmit}
+                        onChange={this.handleChange}
                         className='textarea'
                         maxLength={280}
                     />

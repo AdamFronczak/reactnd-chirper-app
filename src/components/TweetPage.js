@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { useParams } from 'react-router-dom';
 import Tweet from './Tweet'
 import NewTweet from './NewTweet'
 
@@ -9,7 +10,7 @@ class TweetPage extends Component {
         return (
             <div>
                 <Tweet id={id} />
-                <NewTweet id={id} />
+                {id && <NewTweet id={id} /> }
                 {replies.length !== 0 && <h3 className='center'>Replies</h3>}
                 <ul>
                     {replies.map(replyId => (
@@ -24,7 +25,7 @@ class TweetPage extends Component {
 }
 
 function mapStateToProps ({ authedUser, tweets, users }, props) {
-    const { id } = props.match.params;
+    const { id } = useParams();
 
     return {
         id,
